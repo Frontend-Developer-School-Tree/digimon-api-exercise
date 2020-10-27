@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digimon API Exercise</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/css/style.css">
+    
 </head>
 <body>
     <header>
@@ -13,14 +16,18 @@
     <main>
         <h1>Digimon Cyber Sleuth Database</h1>
 
-
         <template id="templateDigimon">
-            <h3 class="digimonName"></h3>
-            <p class="digimonType"></p>
-            <p class="digimonAttributes"></p>
-            <p class="digimonStage"></p>
-            <ul class="digimonDegenerates"></ul>
-            <ul class="digimonEvolves"></ul>
+            <div class="singleDigimon">
+                <h3 class="digimonName"></h3>
+                <p class="digimonType"></p>
+                <p class="digimonAttributes"></p>
+                <p class="digimonStage"></p>
+                <h4>Prior forms</h4>
+                <ul class="digimonDegenerates"></ul>
+                <h4>Evolutions</h4>
+                <ul class="digimonEvolves"></ul>
+            </div>
+            
 
         </template>
         <div id="injectionDiv">
