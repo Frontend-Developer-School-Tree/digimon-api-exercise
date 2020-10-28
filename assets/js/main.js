@@ -17,21 +17,23 @@ class Card {
     static async getData() {
         const response = await fetch('https://digimon-cyber-sleuth-api.herokuapp.com/api/digimon')
         const data = await response.json()
-        // console.log(data);
+        // console.log(data[1]);
 
         data.map( digimon => {
             const cardContent = document.importNode(injectionTemplate.content,true);
 
-            cardContent.querySelector('h3').textContent = digimon.name;
-            cardContent.querySelector('.digimonType').textContent = 'Type: ' + digimon.type;
-            cardContent.querySelector('.digimonAttributes').textContent = 'Attribute: ' + digimon.attribute;
-            cardContent.querySelector('.digimonStage').textContent = 'Stage: ' + digimon.stage;
+            cardContent.querySelector('.digimonName').textContent = digimon.name;
+            cardContent.querySelector('.digimonType').innerHTML = `<strong>Type:</strong> ${digimon.type}`
+            cardContent.querySelector('.digimonAttributes').innerHTML = `<strong>Attribute:</strong> ${digimon.attribute}`
+            cardContent.querySelector('.digimonStage').innerHTML = `<strong>Stage:</strong> ${digimon.stage}`
+            // cardContent.querySelector('.digimonId').textContent = digimon._id;
+
             const degList = cardContent.querySelector('.digimonDegenerates');
             const evList = cardContent.querySelector('.digimonEvolves');
 
             // Prior forms
             if (digimon.degeneratesTo == null) {
-                const newLi = document.createElement('li');
+                const newLi = document.createElement('p');
                 newLi.textContent = "No prior form"
                 degList.append(newLi);
             } else {
@@ -44,7 +46,7 @@ class Card {
 
             // Evolutions
             if (digimon.digivolvesTo == null) {
-                const newLi = document.createElement('li');
+                const newLi = document.createElement('p');
                 newLi.textContent = "No prior form"
                 evList.append(newLi);
             } else {
